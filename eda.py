@@ -4,6 +4,9 @@ import csv
 from collections import Counter
 from math import sqrt
 from typing import Dict
+import kagglehub
+import os
+import pandas as pd
 
 
 NUMERIC_COLUMNS = [
@@ -96,4 +99,8 @@ def explore_dataset(csv_path: str) -> None:
 
 
 if __name__ == "__main__":
-    explore_dataset("dataset.csv")
+    # Download latest version
+    path = kagglehub.dataset_download("amitanshjoshi/spotify-1million-tracks")
+
+    df = pd.read_csv(os.path.join(path, "spotify_data.csv"))
+    explore_dataset = pd.read_csv(os.path.join(path, "spotify_data.csv"))
